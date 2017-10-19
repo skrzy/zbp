@@ -3,25 +3,18 @@
 #include <boost/algorithm/string/classification.hpp>
 #include "Dictionary.h"
 
+using namespace boost;
+
 Dictionary::Dictionary(vector<string> words) {
     copy(words.begin(), words.end(), inserter(dictionary, dictionary.begin()));
 }
 
 bool Dictionary::contains(string word) {
+    return dictionary.count(word)
+        || (isupper(word[0]) && dictionary.count(to_lower_copy(word)))
+        || (all(word, is_upper()) && dictionary.count(to_first_uppercase(word)));
+}
 
-    if (dictionary.count(word)) {
-        return true;
-    }
-
-    if (isupper(word[0])
-        && dictionary.count(boost::to_lower_copy(word))) {
-        return true;
-    }
-    if (boost::all(word, boost::is_upper())) {
-        string first_uppercase = word[0] + boost::to_lower_copy(word.substr(1));
-        if (dictionary.count(first_uppercase)) {
-            return true;
-        }
-    }
-    return false;
+string Dictionary::to_first_uppercase(string word) {
+    return word[0] + to_lower_copy(word.substr(1));
 }

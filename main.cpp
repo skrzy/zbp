@@ -17,14 +17,17 @@ int main(int argc, char * argv[]) {
     ifstream dictionary_fs(file_name);
     vector<string> dictionary;
 
+    cout << "Reading file: " << file_name << endl;
+
     if (dictionary_fs.is_open()) {
         string line;
         while (getline(dictionary_fs, line)) {
             dictionary.push_back(line);
         }
-        cout << dictionary.size() << " lines" << endl;
     }
 
+    cout << dictionary.size() << " lines" << endl;
+    cout << "---------------------------------------" << endl;
 
     string mode = argv[1];
     if (mode == "-m") {

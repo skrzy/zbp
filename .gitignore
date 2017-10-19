@@ -34,6 +34,7 @@
 *.app
 
 /cmake-build-debug/
+/cmake-build-release/
 /polish.dic
 /english.dic
 /text.txt

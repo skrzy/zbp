@@ -3,8 +3,11 @@
 #include <iostream>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/trim_all.hpp>
 #include "Z2.h"
 #include "Dictionary.h"
+
+using namespace boost;
 
 void Z2::run(vector<string> words, const string &file_name) {
 
@@ -18,10 +21,11 @@ void Z2::run(vector<string> words, const string &file_name) {
         string line;
         while (getline(file_stream, line)) {
             vector<string> words_in_line;
-            boost::split(words_in_line, line, boost::is_any_of(" .,"));
+            string trimmed_line = trim_all_copy_if(line, is_any_of(" .,:"));
+            split(words_in_line, trimmed_line, is_any_of(" .,:"));
             for (auto word : words_in_line) {
-                if (dictionary.contains(word)) {
-                    cout << word << endl;
+                if (!dictionary.contains(word)) {
+                    cout << "Incorrect word: " << word << " -> Line: " << line << endl;
                 }
             }
         }
