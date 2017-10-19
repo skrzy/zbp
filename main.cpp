@@ -31,9 +31,9 @@ int main(int argc, char * argv[]) {
         Z1 z1;
         z1.run(dictionary);
     } else if (mode == "-s") {
-        string checked_file = argv[3];
+        string text_file = argv[3];
         Z2 z2;
-        z2.run(dictionary, checked_file);
+        z2.run(dictionary, text_file);
     } else {
         cout << "Invalid arguments" << endl;
         return -1;

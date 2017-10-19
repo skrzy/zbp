@@ -25,7 +25,6 @@ void Z1::run(vector<string> dictionary) {
 
     random_shuffle(dictionary.begin(), dictionary.end());
 
-    // TODO find zamiast count?
     function<void ()> ordered_set_search = [&dictionary, &ordered_set]{
         for (auto entry: dictionary) {
             ordered_set.find(entry);
@@ -43,8 +42,8 @@ void Z1::run(vector<string> dictionary) {
 }
 
 duration<double> Z1::measure(function<void()> &foo) {
-    high_resolution_clock::time_point clk1 = high_resolution_clock::now();
+    high_resolution_clock::time_point start = high_resolution_clock::now();
     foo();
-    high_resolution_clock::time_point clk2 = high_resolution_clock::now();
-    return duration_cast<duration<double>>(clk2 - clk1);
+    high_resolution_clock::time_point finish = high_resolution_clock::now();
+    return duration_cast<duration<double>>(finish - start);
 }
