@@ -9,7 +9,7 @@ using namespace std;
 
 class Z2 {
 public:
-    void run(vector<string> dictionary, const string &file_name);
+    void run(vector<string> & dictionary, const string & file_name);
 };
 
 

@@ -12,7 +12,7 @@ using namespace std::chrono;
 class Z1 {
 
 public:
-    void run(vector<string> dictionary);
+    void run(vector<string> & dictionary);
 
 private:
     duration<double> measure(function<void ()> &foo);

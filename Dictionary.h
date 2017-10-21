@@ -11,7 +11,7 @@ class Dictionary {
 private:
     unordered_set<string> dictionary;
 public:
-    Dictionary(vector<string> words);
+    Dictionary(vector<string> & words);
     bool contains(string word);
 private:
     string to_first_uppercase(string word);

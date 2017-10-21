@@ -5,7 +5,7 @@
 
 using namespace boost;
 
-Dictionary::Dictionary(vector<string> words) {
+Dictionary::Dictionary(vector<string> & words) {
     copy(words.begin(), words.end(), inserter(dictionary, dictionary.begin()));
 }
 

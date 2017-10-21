@@ -9,7 +9,7 @@
 
 using namespace boost;
 
-void Z2::run(vector<string> words, const string &file_name) {
+void Z2::run(vector<string> & words, const string & file_name) {
 
     random_shuffle(words.begin(), words.end());
 

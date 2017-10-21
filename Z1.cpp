@@ -4,7 +4,7 @@
 #include <unordered_set>
 #include "Z1.h"
 
-void Z1::run(vector<string> dictionary) {
+void Z1::run(vector<string> & dictionary) {
 
     random_shuffle(dictionary.begin(), dictionary.end());
 
@@ -29,7 +29,7 @@ void Z1::run(vector<string> dictionary) {
 
     function<void ()> ordered_set_search = [&dictionary, &ordered_set]{
         for (auto entry: dictionary) {
-            ordered_set.find(entry);
+            ordered_set.find(entry) != ordered_set.end();
         }
     };
     cout << "ordered set find: " << measure(ordered_set_search).count() << " sec." << endl;
@@ -37,7 +37,7 @@ void Z1::run(vector<string> dictionary) {
 
     function<void ()> unordered_set_search = [&dictionary, &unordered_set]{
         for (auto entry: dictionary) {
-            unordered_set.find(entry);
+            unordered_set.find(entry) != unordered_set.end();
         }
     };
     cout << "unordered set find: " << measure(unordered_set_search).count() << " sec." << endl;
